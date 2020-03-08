@@ -2,16 +2,16 @@
 
 set -eu
 
-IMAGE=blang/latex:ubuntu
+IMAGE="blang/latex:ubuntu"
 ACTIVE_DOCKER_MACHINE="$(docker-machine active)"
-UID_GID=$(docker-machine ssh $ACTIVE_DOCKER_MACHINE 'echo "$(id -u):$(id -g)"')
+UID_GID="$(docker-machine ssh $ACTIVE_DOCKER_MACHINE 'echo "$(id -u):$(id -g)"')"
 
 exec docker run \
     --rm \
     --interactive \
     --tty \
-    --user "$UID_GID" \
     --network none \
+    --user "$UID_GID" \
     --mount type=bind,src="$PWD",dst=/data \
     "$IMAGE" \
     "$@"
