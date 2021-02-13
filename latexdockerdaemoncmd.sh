@@ -1,2 +1,2 @@
 #!/bin/sh
-exec docker exec -it latex_daemon "$@"
+exec docker exec latex_daemon "$@"
